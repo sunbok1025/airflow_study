@@ -11,6 +11,7 @@ with DAG(
 ) as dag:
     send_email_task = EmailOperator(
         task_id='send_email_task',
+        conn_id='conn_smtp_gmail', #Airflow connection에서 설정한 ID 값 지정
         to='sunbok1025@naver.com',
         subject='Airflow 성공 메일',
         html_content='Airflow 작업이 완료되었습니다.'
