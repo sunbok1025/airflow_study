@@ -1,6 +1,5 @@
 import pendulum
 
-from airflow.providers.standard.operators.bash import BashOperator
 from airflow.sdk import DAG
 from airflow.decorators import task
 
