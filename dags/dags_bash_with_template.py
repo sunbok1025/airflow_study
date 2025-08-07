@@ -21,7 +21,7 @@ with DAG(
             'START_DATE':'{{ data_interval_start | ds }}', # YYYY-MM-DD 형식으로 출력
             'END_DATE':'{{ data_interval_end | ds }}'
         },
-        bash_command='echo $START_DATE && $END_DATE'
+        bash_command='echo $START_DATE && echo $END_DATE'
     )
 
     bash_task3 = BashOperator(
