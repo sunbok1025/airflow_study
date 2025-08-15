@@ -22,7 +22,7 @@ with DAG(
         op_kwargs={'start_date':'{{data_interval_start | ds}}', 'end_date':'{{data_interval_end | ds}}'}
     )
 
-    # 2. kwargs에 있는 템플릿 변수들을 꺼내쓰는 방식
+    # 2. @task로 정의한 함수에서 kwargs를 받으면 Airflow에서 제공하는 템플릿 변수들이 딕셔너리로 채워져서 이를 사용하는 방식
     @task(task_id='python_task2')
     def python_function2(**kwargs):
         print(kwargs)
