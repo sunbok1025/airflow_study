@@ -14,3 +14,13 @@ def transformed_data(context):
     )
     summed_data = my_data["a"] + my_data["b"]
     return summed_data
+
+@asset(schedule=transformed_data)
+def loaded_data(context):
+    my_sum = context["ti"].xcom_pull(
+        dag_id="transformed_data",
+        task_ids="transformed_data",
+        key="return_value",
+        include_prior_dates=True,
+    )
+    return f"Sum of a and b is {my_sum}"
